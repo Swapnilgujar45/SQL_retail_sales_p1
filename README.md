@@ -79,11 +79,13 @@ WHERE
 
 Data Analysis & Business Queries
 1. Sales on a Specific Date
+
 SELECT *
 FROM retail_sales
 WHERE sale_date = '2022-11-05';
 
 2. High Quantity Clothing Sales (Nov-2022)
+
 SELECT *
 FROM retail_sales
 WHERE 
@@ -92,6 +94,7 @@ WHERE
     AND quantity > 4;
 
 3. Total Sales by Category
+
 SELECT 
     category,
     SUM(total_sale) AS net_sales,
@@ -100,17 +103,20 @@ FROM retail_sales
 GROUP BY category;
 
 4. Average Age of Beauty Category Customers
+
 SELECT 
     ROUND(AVG(age), 2) AS avg_age
 FROM retail_sales
 WHERE category = 'Beauty';
 
 5. High-Value Transactions (>1000)
+
 SELECT *
 FROM retail_sales
 WHERE total_sale > 1000;
 
 6. Transactions by Gender & Category
+
 SELECT 
     category,
     gender,
@@ -120,6 +126,7 @@ GROUP BY category, gender
 ORDER BY category;
 
 7. Best-Selling Month in Each Year
+
 SELECT 
     year,
     month,
@@ -139,6 +146,7 @@ FROM (
 WHERE rank = 1;
 
 8. Top 5 Customers by Total Sales
+
 SELECT 
     customer_id,
     SUM(total_sale) AS total_sales
@@ -148,6 +156,7 @@ ORDER BY total_sales DESC
 LIMIT 5;
 
 9. Unique Customers per Category
+
 SELECT 
     category,
     COUNT(DISTINCT customer_id) AS unique_customers
@@ -155,6 +164,7 @@ FROM retail_sales
 GROUP BY category;
 
 10. Shift-Wise Order Distribution
+
 WITH hourly_sale AS (
     SELECT *,
         CASE
